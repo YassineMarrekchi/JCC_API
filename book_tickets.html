@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Book Ticket</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<style>
+		.navbar-nav .nav-link.active {
+			color: black !important;
+		}
+	</style>
+</head>
+<body>
+<section id="header">
+	<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">REGISTER</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			    <form class="ps-3 pe-3"  id="signup-form" action="#">
+				<div class="mb-3">
+				  <label for="email" class="form-label">Email Address</label>
+				  <input class="form-control" type="email" id="email" name="email" required placeholder="info@gmail.com">
+				</div>
+				<div class="mb-3 text-center">
+				  <button type="submit" class="button_1 d-block" style="background-color: red;">REGISTER</button>
+				</div>
+			  </form>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+<nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="index.html"><img src="img\LOGO.png" alt="Logo" style="width: 70px; height: auto;" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-0">
+	    
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="about.html">About </a>
+        </li>
+		
+		<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Transport
+          </a>
+          <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="transportation_plans.html">Transport Plans</a></li>
+            <li><a class="dropdown-item border-0" href="#">Groups Transport Offers</a></li>
+          </ul>
+        </li>
+		
+		<li class="nav-item">
+          <a class="nav-link" href="event.html">JCC</a>
+        </li>
+		
+		<li class="nav-item">
+          <a class="nav-link" href="team.html">team</a>
+        </li>
+				
+		<li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+		
+      </ul>
+	  <ul class="navbar-nav mb-0 ms-auto">
+	    
+        <li class="nav-item">
+            <select name="categories" class="form-select bg-light" required="">
+			<option value="">All Categories</option>
+			<option>Movie</option>
+			<option>Video</option>
+			<option>Tv-Show</option>
+			<option>Music</option>
+			</select>
+			
+			<div class="input-group">
+				<input type="text" class="form-control border-start-0" placeholder="Search Movie">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" style="background-color: red;">
+						<i class="fa fa-search"></i> </button>
+				</span>
+		</div>
+        </li>
+	
+		<li class="nav-item ms-3">
+             <a class="nav-link button" data-bs-toggle="modal" data-bs-target="#signup-modal" href="#" style="background-color: black;">REGISTER</a>
+        </li>
+		<!-- /.modal -->
+		
+      </ul>
+    </div>
+  </div>
+</nav>
+</section>
+
+<section id="center" class="center_home">
+ <div class="container-xl">
+  <div class="row">
+   <div class="col-md-12">
+     <h2 class="text-center mt-5">Book Your Tickets</h2>
+	 <hr class="line me-auto ms-auto">
+	 <form class="ps-3 pe-3 mt-5" id="booking-form" action="#">
+		<div class="mb-3">
+		  <label for="email" class="form-label">Email Address</label>
+		  <input class="form-control" type="email" id="email" name="email" required placeholder="info@gmail.com">
+		</div>
+		<div class="mb-3">
+		  <label for="movie" class="form-label">Movie</label>
+		  <select class="form-select" id="movie" name="movie" required>
+			<option value="">Select Movie</option>
+			<!-- Movie options will be dynamically generated -->
+		  </select>
+		</div>
+		<div class="mb-3">
+		  <label for="seats" class="form-label">Select Seat</label>
+		  <select class="form-select" id="seats" name="seats" required>
+			<option value="">Select Seat</option>
+			<!-- Seat options will be dynamically generated -->
+		  </select>
+		</div>
+		<div class="mb-3">
+		  <label for="snacks" class="form-label">Snacks</label>
+		  <div class="form-control" style="height: 150px; overflow-y: scroll;">
+			<!-- Snack options will be dynamically generated -->
+			<div id="snack-options"></div>
+		  </div>
+		</div>
+		<div class="mb-3">
+		  <label for="transport" class="form-label">Transport</label>
+		  <select class="form-select" id="transport" name="transport">
+			<option value="">No Transport</option>
+			<option value="Carpool">Carpool</option>
+			<option value="CinemaTdour">CinemaTdour</option>
+			<option value="Private Bus">Private Bus</option>
+		  </select>
+		</div>
+		<div class="mb-3" id="organization-field" style="display: none;">
+		  <label for="organization" class="form-label">Organization / Entity Name</label>
+		  <input class="form-control" type="text" id="organization" name="organization" placeholder="Organization / Entity Name">
+		</div>
+		<div class="mb-3">
+		  <label for="student" class="form-label">Are you a student?</label>
+		  <input type="checkbox" id="student" name="student">
+		</div>
+		<div class="mb-3" id="totalPriceContainer" style="display: none;">
+		  <label for="totalPrice" class="form-label">Total Ticket Price</label>
+		  <input class="form-control" type="text" id="totalPrice" name="totalPrice" readonly>
+		</div>
+		<div class="mb-3 text-center">
+		  <button type="submit" class="button_1 d-block" style="background-color: red;">Book Tickets</button>
+		</div>
+	  </form>
+	  <div id="message" class="mt-3 text-center"></div>
+	  <div class="row mt-5">
+		<div class="col-md-6">
+		  <div class="card">
+			<div class="card-body text-center">
+			  <h5 class="card-title">Selected Snacks</h5>
+			  <div id="selected-snacks" class="mt-3">
+				<!-- Selected snacks will be displayed here -->
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="col-md-6">
+		  <div class="card">
+			<div class="card-body text-center">
+			  <h5 class="card-title">Selected Movie</h5>
+			  <div id="selected-movie" class="mt-3">
+				<!-- Selected movie will be displayed here -->
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="footer" class="p_3">
+	<!-- ...existing code... -->
+</section>
+
+<section id="footer_b" class="pt-3 pb-3">
+	<!-- ...existing code... -->
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+	const baseURL = 'http://localhost:3000'; // Ensure this points to your backend server
+
+	// Function to fetch data from the backend
+	const fetchData = async (url, options = {}) => {
+		try {
+			options.headers = {
+				'Content-Type': 'application/json',
+				...options.headers
+			};
+			const response = await fetch(url, options);
+			if (!response.ok) {
+				let errorText = `HTTP error! status: ${response.status}`;
+				try {
+					const error = await response.json();
+					errorText = `HTTP error! status: ${response.status}, message: ${error.error || JSON.stringify(error)}`;
+				} catch (jsonError) {
+					console.error("Non-JSON error response", jsonError);
+				}
+				throw new Error(errorText);
+			}
+			return await response.json();
+		} catch (error) {
+			console.error('Fetch error:', error);
+			return { error: error.message };
+		}
+	};
+
+	// Handle Client registration form submission
+	const signupForm = document.querySelector('#signup-modal form');
+	if (signupForm) {
+		const messageDiv = document.createElement('div');
+		messageDiv.classList.add('mt-3', 'text-center');
+		signupForm.appendChild(messageDiv);
+
+		signupForm.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			
+			const formData = new FormData(signupForm);
+			const signupData = {
+				email: formData.get('email'),
+			};
+
+			// Validate required fields
+			if (!signupData.email) {
+				messageDiv.textContent = 'Email is required.';
+				return;
+			}
+
+			const baseURL = 'http://localhost:3000'; // Ensure this points to your backend server
+			const url = `${baseURL}/app/clients/register`;
+			
+			messageDiv.textContent = 'Registering...';
+			
+			try {
+				const response = await fetch(url, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(signupData)
+				});
+
+				const result = await response.json();
+				if (response.ok) {
+					messageDiv.textContent = 'Registration successful!';
+				} else {
+					messageDiv.textContent = `Error: ${result.error}`;
+				}
+			} catch (error) {
+				messageDiv.textContent = `Error: ${error.message}`;
+			}
+		});
+	}
+
+	// Handle Ticket booking form submission
+	const bookingForm = document.querySelector('#booking-form');
+	if (bookingForm) {
+		const messageDiv = document.getElementById('message');
+
+		bookingForm.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			
+			const formData = new FormData(bookingForm);
+			const email = formData.get('email');
+			const movie = formData.get('movie');
+			const seat_number = formData.get('seats');
+			const snacks = Array.from(formData.getAll('snack'));
+			const transport = formData.get('transport');
+			const organization_name = formData.get('organization');
+
+			// Validate required fields
+			if (!email || !movie || !seat_number || !transport) {
+				messageDiv.textContent = 'Email, movie, seat, and transport are required.';
+				return;
+			}
+
+			// Fetch client ID based on email
+			const clientData = await fetchData(`${baseURL}/app/clients?email=${encodeURIComponent(email)}`);
+			if (clientData.error || clientData.length === 0) {
+				messageDiv.textContent = 'Client not found.';
+				return;
+			}
+			const client_id = clientData[0].client_id;
+
+			const bookingData = {
+				client_id,
+				movie_name: movie,
+				seat_number,
+				transport,
+				organization_name: transport === 'CinemaTdour' || transport === 'Private Bus' ? organization_name : undefined,
+				snacks,
+			};
+
+			const url = `${baseURL}/app/tickets`;
+			
+			messageDiv.textContent = 'Booking tickets...';
+			
+			try {
+				const response = await fetch(url, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(bookingData)
+				});
+
+				const result = await response.json();
+				if (response.ok) {
+					messageDiv.textContent = 'Tickets booked successfully!';
+				} else {
+					messageDiv.textContent = `Error: ${result.error}`;
+				}
+			} catch (error) {
+				messageDiv.textContent = `Error: ${error.message}`;
+			}
+		});
+	}
+
+	// Fetch and populate movie options in the booking form
+	const populateMovieOptions = async () => {
+		const moviesData = await fetchData(`${baseURL}/app/movies`);
+		if (moviesData && !moviesData.error) {
+			const movieSelect = document.getElementById('movie');
+			moviesData.forEach(movie => {
+				const option = document.createElement('option');
+				option.value = movie.title;
+				option.textContent = movie.title;
+				movieSelect.appendChild(option);
+			});
+
+			movieSelect.addEventListener('change', async (event) => {
+				const selectedMovie = moviesData.find(movie => movie.title === event.target.value);
+				const selectedMovieDiv = document.getElementById('selected-movie');
+				if (selectedMovie) {
+					const imageUrl = `img/${encodeURIComponent(selectedMovie.title.replace(/\s+/g, '_').toLowerCase())}_lposter.jpg`;
+					selectedMovieDiv.innerHTML = `<img src="${imageUrl}" class="img-fluid" alt="${selectedMovie.title}" style="max-width: 100px;">`;
+				} else {
+					selectedMovieDiv.innerHTML = '';
+				}
+				await populateSeatOptions(selectedMovie.title);
+				calculateTotalPrice();
+			});
+		} else {
+			console.error("Failed to fetch movies data:", moviesData.error);
+		}
+	};
+
+	// Fetch and populate seat options in the booking form
+	const populateSeatOptions = async (movieTitle) => {
+		const allSeats = [
+			'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
+			'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14', 'B15',
+			'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15',
+			'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14', 'D15',
+			'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'E11', 'E12', 'E13', 'E14', 'E15',
+			'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15',
+			'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15',
+			'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12', 'H13', 'H14', 'H15',
+			'I1', 'I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10', 'I11', 'I12', 'I13', 'I14', 'I15',
+			'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14', 'J15'
+		];
+
+		const takenSeatsData = await fetchData(`${baseURL}/app/tickets?movie=${encodeURIComponent(movieTitle)}`);
+		const takenSeats = takenSeatsData.map(ticket => ticket.seat_number);
+		const availableSeats = allSeats.filter(seat => !takenSeats.includes(seat));
+
+		const seatSelect = document.getElementById('seats');
+		seatSelect.innerHTML = '<option value="">Select Seat</option>'; // Clear previous options
+		availableSeats.forEach(seat => {
+			const option = document.createElement('option');
+			option.value = seat;
+			option.textContent = seat;
+			seatSelect.appendChild(option);
+		});
+	};
+
+	// Fetch and populate snack options in the booking form
+	const populateSnackOptions = async () => {
+		const snacksData = await fetchData(`${baseURL}/app/snacks`);
+		if (snacksData && !snacksData.error) {
+			const snackOptions = document.getElementById('snack-options');
+			snacksData.forEach(snack => {
+				const option = document.createElement('div');
+				option.classList.add('form-check');
+				option.innerHTML = `
+					<input class="form-check-input" type="checkbox" value="${snack.name}" id="snack-${snack.name}" data-price="${snack.price}" name="snack">
+					<label class="form-check-label" for="snack-${snack.name}">
+						${snack.name} - ${snack.price} TND
+					</label>
+				`;
+				snackOptions.appendChild(option);
+			});
+
+			snackOptions.addEventListener('change', (event) => {
+				const selectedSnacks = Array.from(snackOptions.querySelectorAll('input:checked')).map(input => input.value);
+				const selectedSnackDiv = document.getElementById('selected-snacks');
+				selectedSnackDiv.innerHTML = selectedSnacks.map(snackName => {
+					const selectedSnack = snacksData.find(snack => snack.name === snackName);
+					if (selectedSnack) {
+						const imageUrl = `img/${encodeURIComponent(selectedSnack.name.replace(/\s+/g, '_').toLowerCase())}.jpg`;
+						return `<div class="card mb-3"><img src="${imageUrl}" class="card-img-top" alt="${selectedSnack.name}" style="max-width: 100px;"><div class="card-body"><p class="card-text">${selectedSnack.name}</p></div></div>`;
+					}
+					return '';
+				}).join('');
+				calculateTotalPrice();
+			});
+		} else {
+			console.error("Failed to fetch snacks data:", snacksData.error);
+		}
+	};
+
+	// Calculate total ticket price
+	const calculateTotalPrice = () => {
+		const snackOptions = document.getElementById('snack-options');
+		const transportSelect = document.getElementById('transport');
+		const studentCheckbox = document.getElementById('student');
+		const totalPriceInput = document.getElementById('totalPrice');
+		const totalPriceContainer = document.getElementById('totalPriceContainer');
+		const organizationField = document.getElementById('organization-field');
+		const movieSelect = document.getElementById('movie');
+
+		if (!movieSelect.value) {
+			totalPriceContainer.style.display = 'none';
+			return;
+		}
+
+		const snackPrices = Array.from(snackOptions.querySelectorAll('input:checked')).map(input => parseFloat(input.dataset.price) || 0);
+		const snackPrice = snackPrices.reduce((total, price) => total + price, 0);
+		let ticketFee = studentCheckbox.checked ? 3 : 5;
+		let transportFee = 0;
+
+		if (transportSelect.value === 'Carpool') {
+			transportFee = studentCheckbox.checked ? 15 : 20;
+			organizationField.style.display = 'none';
+		} else if (transportSelect.value === 'CinemaTdour' || transportSelect.value === 'Private Bus') {
+			organizationField.style.display = 'block';
+		} else {
+			organizationField.style.display = 'none';
+		}
+
+		const totalPrice = snackPrice + transportFee + ticketFee;
+		totalPriceInput.value = `${totalPrice.toFixed(2)} TND`;
+		totalPriceContainer.style.display = 'block';
+	};
+
+	// Add event listeners to recalculate total price
+	document.getElementById('student').addEventListener('change', calculateTotalPrice);
+	document.getElementById('transport').addEventListener('change', calculateTotalPrice);
+
+	populateMovieOptions();
+	populateSnackOptions();
+});
+</script>
+</body>
+</html>

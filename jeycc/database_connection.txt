@@ -1,0 +1,16 @@
+// database connection logic
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'postgres', // PostgreSQL username
+  host: 'localhost', // localhost for Docker container
+  database: 'jeycc', // Database name from the Docker setup
+  password: 'Yassine*3', // Password from the Docker setup
+  port: 5432, // PostgreSQL default port
+});
+
+pool.on('connect', () => console.log('Connected to the database.'));
+pool.on('error', (err) => {
+  console.error('Unexpected error on database:', err);
+  process.exit(-1);
+});

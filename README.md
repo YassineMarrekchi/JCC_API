@@ -1,4 +1,3 @@
-readme_content = """
 # Welcome to JeyCC Web Service Project 👋
 
 This is a Web Service project for the JeyCC application.

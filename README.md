@@ -6,7 +6,7 @@ This is a Web Service project for the JeyCC application.
 
 This project is built using the following technologies:
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+<div style="display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items: center; gap: 10px;">
     <div style="display: flex; flex-direction: column; align-items: center; border: 1px solid #eee; padding: 10px; margin: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5-e_zLyIIrlVMxClajEd6a1KCSg8D5koXLQ&s" alt="Node.js Logo" width="100">
         <p>Node.js</p>
@@ -48,6 +48,7 @@ This project is built using the following technologies:
         <p>JavaScript</p>
     </div>
 </div>
+
 
 ## 🏠 Homepage
 

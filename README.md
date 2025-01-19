@@ -19,6 +19,11 @@ This project is built using the following stack:
 
 ## 🏠 Homepage
 
+<!-- Add links here, such as:
+    - Application link
+    - API Documentation link
+-->
+
 ## Install
 
 ```sh
